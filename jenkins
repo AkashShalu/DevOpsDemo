@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    environment{
+      username='NeerajDevOps'
+    }
+
+    parameters {
+        string(name: 'params' , defaultValue: 'myDefaultValue' , description: 'desc')    
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building Mode Active'
+                sh 'date'
+                sh 'ls'
+                sh 'echo "${name}" '
+                sh 'echo ${defaultValue}'
+            }
+        }
+    
+            stage('Test') {
+            steps {
+                echo 'Testing Mode Active'
+            }
+        }
+
+        stage('Deploy Test') {
+            steps {
+                echo 'Deploy-Test Mode Active'
+            }
+        }
+            stage('Deploy Production') {
+            steps {
+                echo 'Deploy-Production Mode Active'
+            }
+            }
+    }
+}
